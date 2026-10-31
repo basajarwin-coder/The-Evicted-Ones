@@ -1,0 +1,5 @@
+export const inputCls = 'mt-1.5 w-full border border-line bg-ink px-3 py-2.5 text-sm outline-none transition focus:border-blue'
+export const filterCls = 'w-full border border-line bg-ink px-3 py-2.5 text-sm outline-none transition focus:border-blue'
+export const labelCls = 'block font-display text-[11px] font-semibold tracking-[0.2em] text-mist'
+export const btnCls = 'bg-blue px-5 py-2.5 font-display text-xs font-bold tracking-[0.2em] text-white transition hover:bg-ice hover:text-ink disabled:opacity-50'
+export const ghostBtn = 'border border-line px-4 py-2.5 font-display text-xs font-semibold tracking-[0.2em] text-mist transition hover:border-blue hover:text-white disabled:opacity-50'
