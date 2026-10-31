@@ -10,14 +10,15 @@ export const metadata: Metadata = { title: 'Management | TEO – The Evicted One
 const office: Record<number, string> = {
   0: 'President / CEO',
   1: 'Vice President',
+  2: 'Web Developer',
 }
 
 export async function ManagementSection() {
-  const leaders = (await getMembers()).filter((member) => member.status === 'active' && leadershipRank(member.position) < 2)
+  const leaders = (await getMembers()).filter((member) => member.status === 'active' && leadershipRank(member.position) < 3)
 
   return (
     <>
-      <PageHero eyebrow="CLAN OFFICE" title="Management">The President and Vice President of TEO. These are the people who lead the clan.</PageHero>
+      <PageHero eyebrow="CLAN OFFICE" title="Management">The President, Vice President, and Web Developer of TEO. These are the people who lead and build the clan.</PageHero>
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
         {leaders.length ? (
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
@@ -29,7 +30,7 @@ export async function ManagementSection() {
             ))}
           </div>
         ) : (
-          <Empty title="Management has not been posted">When staff set a member’s title to Owner / Clan Master or Vice Clan Master, that person appears here as President or Vice President.</Empty>
+          <Empty title="Management has not been posted">When staff set a member’s title to Owner / Clan Master, Vice Clan Master, or Web Developer, that person appears here.</Empty>
         )}
       </section>
     </>

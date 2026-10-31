@@ -44,6 +44,7 @@ export const entities: Record<EntityKey, EntityDef> = {
       { name: 'position', label: 'Clan title', type: 'select', required: true, half: true, hint: 'Owner / Clan Master is shown first, then Vice Clan Master.', options: [
         { label: 'Owner / Clan Master', value: 'Clan Master' },
         { label: 'Vice Clan Master', value: 'Vice Clan Master' },
+        { label: 'Web Developer', value: 'Web Developer' },
         { label: 'Member', value: 'Member' },
         { label: 'Captain', value: 'Captain' },
         { label: 'IGL', value: 'IGL' },

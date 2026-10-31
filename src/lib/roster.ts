@@ -3,13 +3,15 @@ export function leadershipRank(position?: string | null) {
   const value = (position ?? '').toLowerCase()
   if (value.includes('vice') && (value.includes('master') || value.includes('owner'))) return 1
   if (value.includes('clan master') || value.includes('owner')) return 0
-  return 2
+  if (value.includes('web developer')) return 2
+  return 3
 }
 
 export function leadershipLabel(position?: string | null) {
   const rank = leadershipRank(position)
   if (rank === 0) return 'Owner / Clan Master'
   if (rank === 1) return 'Vice Clan Master'
+  if (rank === 2) return 'Web Developer'
   return null
 }
 
