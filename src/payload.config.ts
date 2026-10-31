@@ -19,7 +19,7 @@ import { SiteSettings } from './globals/SiteSettings'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-export default buildFigmaConfig({
+const options = {
   admin: {
     user: Admins.slug,
     constrainWidth: true,
@@ -49,5 +49,8 @@ export default buildFigmaConfig({
     defaultLocale: 'en',
   },
   plugins: [mcpPlugin({})],
-  figma: {},
-})
+}
+
+export default process.env.FIGMA_EID || process.env.FIGMA
+  ? buildFigmaConfig({ ...options, figma: {} })
+  : options

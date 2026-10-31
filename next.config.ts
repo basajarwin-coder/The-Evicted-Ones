@@ -76,4 +76,6 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withPayload(nextConfig, { devBundleServerPackages: false })
+export default process.env.FIGMA_EID || process.env.FIGMA
+  ? withPayload(nextConfig, { devBundleServerPackages: false })
+  : nextConfig
