@@ -46,8 +46,8 @@ export default function Splash() {
         setTimeout(() => {
           setPhase('leaving')
           window.dispatchEvent(new Event('teo-start'))
-        }, 280)
-        setTimeout(() => setPhase('done'), 1220)
+        }, 200)
+        setTimeout(() => setPhase('done'), 920)
       }
     }
     raf.current = requestAnimationFrame(tick)
@@ -67,7 +67,7 @@ export default function Splash() {
       <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue/25 blur-[140px]" />
       <div className="absolute left-1/3 top-1/4 h-72 w-72 rounded-full bg-violet/20 blur-[130px]" />
 
-      <div className="relative flex flex-col items-center">
+      <div className="splash-copy relative flex flex-col items-center">
         <Image src="/teo-logo.png" alt="TEO – The Evicted Ones" width={207} height={256} priority className="h-36 w-auto animate-float drop-shadow-[0_0_50px_rgba(47,140,255,0.55)] sm:h-52" />
         <p className="mt-8 font-display text-xs font-semibold tracking-[0.28em] text-ice animate-rise sm:text-sm sm:tracking-[0.6em]" style={{ animationDelay: '0.1s' }}>WELCOME TO</p>
         <h1 className="mt-2 font-display text-6xl font-extrabold tracking-[0.08em] text-gradient animate-rise sm:text-8xl sm:tracking-[0.12em] lg:text-9xl" style={{ animationDelay: '0.25s' }}>TEO</h1>
@@ -82,7 +82,6 @@ export default function Splash() {
               style={{ animationDelay: '0.55s' }}
             >
               <span className="relative z-10">ENTER</span>
-              <span className="absolute inset-y-0 w-1/3 -skew-x-12 bg-white/30 animate-sweep" />
             </button>
           ) : (
             <div aria-live="polite">

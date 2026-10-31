@@ -19,13 +19,13 @@ export default async function HomePage() {
 
       {/* HERO */}
       <section id="members" className="sheet">
-      <div className="relative isolate flex min-h-screen items-center overflow-hidden pt-20">
+      <div className="relative isolate overflow-hidden pt-20 lg:flex lg:min-h-screen lg:items-center">
         <div className="absolute inset-0 -z-10 grid-bg" />
         <div className="absolute -left-40 top-10 -z-10 h-[560px] w-[560px] rounded-full bg-blue/20 blur-[150px]" />
         <div className="absolute -right-32 bottom-0 -z-10 h-[480px] w-[480px] rounded-full bg-violet/20 blur-[150px]" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink to-transparent" />
         <div className="absolute right-[-8%] top-1/2 -z-10 hidden h-[140%] w-[34%] -translate-y-1/2 -skew-x-12 border-l border-blue/20 bg-gradient-to-b from-blue/10 to-transparent lg:block" />
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_5.75rem] items-center gap-3 px-4 py-10 sm:grid-cols-[minmax(0,1.2fr)_10rem] sm:gap-8 sm:px-8 sm:py-16 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_5.25rem] items-center gap-3 px-4 py-4 sm:grid-cols-[minmax(0,1.2fr)_10rem] sm:gap-8 sm:px-8 sm:py-16 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
           <div>
             <p className="font-display text-[10px] font-semibold tracking-[0.14em] text-blue animate-rise sm:text-xs sm:tracking-[0.45em]">CALL OF DUTY: MOBILE · ESPORTS CLAN</p>
             <h1 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] animate-rise sm:mt-5 sm:text-7xl lg:text-8xl" style={{ animationDelay: '0.1s' }}>
@@ -49,10 +49,10 @@ export default async function HomePage() {
       {/* ABOUT */}
       <section className="border-y border-line bg-ink">
         <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
-            <div className="flex flex-col justify-between border-b border-line px-5 py-14 sm:px-10 xl:sticky xl:top-0 xl:min-h-screen xl:border-r xl:border-b-0 xl:py-24">
+            <div className="flex flex-col justify-between border-b border-line px-5 py-8 sm:px-10 sm:py-14 xl:sticky xl:top-0 xl:min-h-screen xl:border-r xl:border-b-0 xl:py-24">
             <p className="font-display text-xs font-semibold tracking-[0.28em] text-blue sm:tracking-[0.35em]">00 / ABOUT US</p>
             <div>
-              <h2 className="mt-10 font-display text-4xl font-bold uppercase leading-[0.9] sm:text-6xl xl:mt-0 xl:text-7xl">A clan with its feet down.</h2>
+              <h2 className="mt-4 font-display text-4xl font-bold uppercase leading-[0.9] sm:mt-10 sm:text-6xl xl:mt-0 xl:text-7xl">A clan with its feet down.</h2>
               <p className="mt-6 max-w-md text-base leading-relaxed text-white/80">We are TEO. The Evicted Ones. Established in {CLAN_ESTABLISHED}. Reborn in {CLAN_REBORN}. A Call of Duty: Mobile clan that stays grounded, scrims honestly, and keeps the longer vision alive.</p>
               <p className="mt-4 font-display text-sm tracking-[0.18em] text-ice">Est. {CLAN_ESTABLISHED} · Reborn {CLAN_REBORN}</p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -61,7 +61,7 @@ export default async function HomePage() {
               </div>
             </div>
           </div>
-          <div className="space-y-12 px-5 py-14 sm:px-10 lg:py-24">
+          <div className="space-y-8 px-5 py-8 sm:space-y-12 sm:px-10 sm:py-14 lg:py-24">
             <div>
               <h3 className="font-display text-lg font-bold tracking-[0.12em]">OUR BEGINNINGS</h3>
               <p className="mt-4 max-w-xl text-sm leading-7 text-mist">Established in {CLAN_ESTABLISHED}. Reborn in {CLAN_REBORN}. TEO started as players who wanted a clan with a clear standard. Show up. Scrim for real. Get better in public. The name stayed: {CLAN_TIKTOK_NAME}.</p>
