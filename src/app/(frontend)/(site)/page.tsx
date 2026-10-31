@@ -25,8 +25,8 @@ export default async function HomePage() {
         <div className="absolute -right-32 bottom-0 -z-10 h-[480px] w-[480px] rounded-full bg-violet/20 blur-[150px]" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink to-transparent" />
         <div className="absolute right-[-8%] top-1/2 -z-10 hidden h-[140%] w-[34%] -translate-y-1/2 -skew-x-12 border-l border-blue/20 bg-gradient-to-b from-blue/10 to-transparent lg:block" />
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.2fr_1fr]">
-          <div>
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-5 py-10 sm:px-8 md:gap-12 md:py-16 lg:grid-cols-[1.2fr_1fr]">
+          <div className="order-2 lg:order-1">
             <p className="font-display text-[10px] font-semibold tracking-[0.18em] text-blue animate-rise sm:text-xs sm:tracking-[0.45em]">CALL OF DUTY: MOBILE · ESPORTS CLAN</p>
             <h1 className="mt-5 font-display text-5xl font-extrabold uppercase leading-[0.95] animate-rise sm:text-7xl lg:text-8xl" style={{ animationDelay: '0.1s' }}>
               <span className="text-gradient">TEO</span>
@@ -39,7 +39,7 @@ export default async function HomePage() {
               <a href="#management" className="border border-line bg-coal/60 px-5 py-4 text-center font-display text-xs font-bold tracking-[0.18em] transition hover:border-blue clip-cut-sm sm:px-8 sm:text-sm sm:tracking-[0.25em]">MANAGEMENT</a>
             </div>
           </div>
-          <div className="relative mx-auto hidden w-full max-w-xs justify-center md:flex lg:max-w-md">
+          <div className="relative order-1 mx-auto flex w-full max-w-[180px] justify-center sm:max-w-[220px] lg:order-2 lg:max-w-md">
             <div className="absolute inset-8 rounded-full bg-blue/30 blur-[90px]" />
             <Image src="/teo-logo.png" alt="TEO – The Evicted Ones crest" width={420} height={520} priority className="relative h-auto w-full max-w-full animate-float drop-shadow-[0_0_60px_rgba(47,140,255,0.45)]" />
           </div>

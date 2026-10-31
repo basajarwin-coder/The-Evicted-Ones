@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 import { Avatar, DemoBadge, Empty } from '@/components/ui'
 import { likeMember } from '@/app/(frontend)/(site)/actions'
 import { memberSocials } from '@/lib/clan'
-import { leadershipLabel, leadershipRank } from '@/lib/roster'
+import { leadershipLabel } from '@/lib/roster'
 import type { Media } from '@/payload-types'
 
 export type MemberItem = {
@@ -59,14 +59,9 @@ export function MemberCard({ m }: { m: MemberItem }) {
     if (!rect || rect.width < 2) return null
     return { top: rect.top, left: rect.left, width: rect.width, height: rect.height }
   }
-  const rank = leadershipRank(m.position)
   const title = leadershipLabel(m.position)
   const links = socialLinks(m.socials)
-  const frame = rank === 0
-    ? 'border-ice shadow-[0_0_40px_-12px_rgba(143,214,255,0.85)]'
-    : rank === 1
-      ? 'border-blue shadow-[0_0_32px_-14px_rgba(47,140,255,0.8)]'
-      : 'border-line'
+  const frame = 'border-ice shadow-[0_0_40px_-12px_rgba(143,214,255,0.85)]'
   return (
     <>
       <article className={`group flex overflow-hidden border bg-coal transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? '' : 'hover:-translate-y-2 hover:shadow-[0_28px_70px_-24px_rgba(47,140,255,0.65)]'} ${frame}`}>
