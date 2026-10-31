@@ -46,8 +46,8 @@ export default function Splash() {
         setTimeout(() => {
           setPhase('leaving')
           window.dispatchEvent(new Event('teo-start'))
-        }, 350)
-        setTimeout(() => setPhase('done'), 1150)
+        }, 280)
+        setTimeout(() => setPhase('done'), 1220)
       }
     }
     raf.current = requestAnimationFrame(tick)
@@ -61,7 +61,7 @@ export default function Splash() {
     <div
       role="dialog"
       aria-label="Welcome to TEO"
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-ink px-4 text-center transition-all duration-700 sm:px-6 ${phase === 'leaving' ? 'pointer-events-none scale-110 opacity-0' : 'opacity-100'}`}
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-ink px-4 text-center sm:px-6 ${phase === 'leaving' ? 'splash-leave pointer-events-none' : ''}`}
     >
       <div className="grid-bg absolute inset-0 opacity-70" />
       <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue/25 blur-[140px]" />
@@ -94,7 +94,7 @@ export default function Splash() {
                 </span>
               </div>
               <div className="mt-3 h-1.5 w-full overflow-hidden bg-plate">
-                <div className="h-full bg-gradient-to-r from-blue via-ice to-violet shadow-[0_0_14px] shadow-blue" style={{ width: `${pct}%` }} />
+                <div className="h-full bg-gradient-to-r from-blue via-ice to-violet shadow-[0_0_14px] shadow-blue transition-[width] duration-150 ease-out" style={{ width: `${pct}%` }} />
               </div>
             </div>
           )}

@@ -25,21 +25,21 @@ export default async function HomePage() {
         <div className="absolute -right-32 bottom-0 -z-10 h-[480px] w-[480px] rounded-full bg-violet/20 blur-[150px]" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink to-transparent" />
         <div className="absolute right-[-8%] top-1/2 -z-10 hidden h-[140%] w-[34%] -translate-y-1/2 -skew-x-12 border-l border-blue/20 bg-gradient-to-b from-blue/10 to-transparent lg:block" />
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-5 py-10 sm:px-8 md:gap-12 md:py-16 lg:grid-cols-[1.2fr_1fr]">
-          <div className="order-2 lg:order-1">
-            <p className="font-display text-[10px] font-semibold tracking-[0.18em] text-blue animate-rise sm:text-xs sm:tracking-[0.45em]">CALL OF DUTY: MOBILE · ESPORTS CLAN</p>
-            <h1 className="mt-5 font-display text-5xl font-extrabold uppercase leading-[0.95] animate-rise sm:text-7xl lg:text-8xl" style={{ animationDelay: '0.1s' }}>
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_5.75rem] items-center gap-3 px-4 py-10 sm:grid-cols-[minmax(0,1.2fr)_10rem] sm:gap-8 sm:px-8 sm:py-16 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+          <div>
+            <p className="font-display text-[10px] font-semibold tracking-[0.14em] text-blue animate-rise sm:text-xs sm:tracking-[0.45em]">CALL OF DUTY: MOBILE · ESPORTS CLAN</p>
+            <h1 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] animate-rise sm:mt-5 sm:text-7xl lg:text-8xl" style={{ animationDelay: '0.1s' }}>
               <span className="text-gradient">TEO</span>
-              <span className="mt-2 block text-xl font-bold tracking-[0.08em] text-white sm:text-4xl sm:tracking-[0.12em]">The Evicted Ones</span>
+              <span className="mt-2 block text-base font-bold tracking-[0.06em] text-white sm:text-4xl sm:tracking-[0.12em]">The Evicted Ones</span>
             </h1>
-            <p className="mt-6 max-w-xl font-display text-lg font-medium tracking-normal text-ice animate-rise sm:text-xl" style={{ animationDelay: '0.2s' }}>{CLAN_LINE}</p>
-            <p className="mt-6 max-w-xl text-lg text-mist animate-rise" style={{ animationDelay: '0.3s' }}>{settings.intro || 'TEO is a competitive Call of Duty: Mobile clan built on discipline, teamwork and relentless practice.'}</p>
-            <div className="mt-9 flex flex-col gap-3 animate-rise sm:flex-row sm:flex-wrap sm:gap-4" style={{ animationDelay: '0.4s' }}>
+            <p className="mt-4 max-w-xl font-display text-sm font-medium tracking-normal text-ice animate-rise sm:mt-6 sm:text-xl" style={{ animationDelay: '0.2s' }}>{CLAN_LINE}</p>
+            <p className="mt-3 max-w-xl text-sm text-mist animate-rise sm:mt-6 sm:text-lg" style={{ animationDelay: '0.3s' }}>{settings.intro || 'TEO is a competitive Call of Duty: Mobile clan built on discipline, teamwork and relentless practice.'}</p>
+            <div className="mt-6 flex flex-col gap-3 animate-rise sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4" style={{ animationDelay: '0.4s' }}>
               <a href="#roster" className="bg-blue px-5 py-4 text-center font-display text-xs font-bold tracking-[0.18em] text-white transition hover:bg-ice hover:text-ink clip-cut-sm sm:px-8 sm:text-sm sm:tracking-[0.25em]">MEET ALL MEMBERS</a>
               <a href="#management" className="border border-line bg-coal/60 px-5 py-4 text-center font-display text-xs font-bold tracking-[0.18em] transition hover:border-blue clip-cut-sm sm:px-8 sm:text-sm sm:tracking-[0.25em]">MANAGEMENT</a>
             </div>
           </div>
-          <div className="relative order-1 mx-auto flex w-full max-w-[180px] justify-center sm:max-w-[220px] lg:order-2 lg:max-w-md">
+          <div className="relative flex w-full justify-end lg:max-w-md lg:justify-center">
             <div className="absolute inset-8 rounded-full bg-blue/30 blur-[90px]" />
             <Image src="/teo-logo.png" alt="TEO – The Evicted Ones crest" width={420} height={520} priority className="relative h-auto w-full max-w-full animate-float drop-shadow-[0_0_60px_rgba(47,140,255,0.45)]" />
           </div>
