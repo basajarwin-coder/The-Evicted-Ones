@@ -44,7 +44,7 @@ function SocialIcon({ name }: { name: string }) {
   if (name === 'instagram') {
     return <svg {...common}><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm10 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 1.6A2.2 2.2 0 1 0 14.2 12 2.2 2.2 0 0 0 12 9.8zM17.4 6.3a1 1 0 1 1-1 1 1 1 0 0 1 1-1z" /></svg>
   }
-  return <svg {...common}><path d="M14.5 3c.4 2.4 1.8 3.9 4 4.1v2.4c-1.4 0-2.7-.4-3.8-1.2v6.4A5.7 5.7 0 1 1 9 9.1v2.5a3.2 3.2 0 1 0 2.2 3.1V3h3.3z" /></svg>
+  return <svg {...common}><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" /></svg>
 }
 
 type Frame = { top: number; left: number; width: number; height: number }
@@ -77,7 +77,7 @@ export function MemberCard({ m }: { m: MemberItem }) {
         >
           <div ref={imageRef} className="relative aspect-square w-full shrink-0 overflow-hidden bg-plate">
             <Avatar media={m.avatar} name={m.ign} fit="contain" className={`h-full w-full ${open ? 'opacity-0' : ''}`} />
-            <div className="pointer-events-none absolute bottom-3 left-3 flex gap-2 opacity-0 transition duration-500 group-hover:opacity-100">
+            <div className="pointer-events-none absolute bottom-3 left-3 flex gap-2 transition duration-500 [@media(hover:hover)]:opacity-0 group-hover:opacity-100">
               {links.filter(([, href]) => /^https?:\/\//.test(href)).map(([name, href]) => (
                 <span key={name} className="pointer-events-auto">
                   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={name} className="grid h-8 w-8 place-items-center rounded-md border border-white/20 bg-ink/70 text-white">
@@ -295,6 +295,62 @@ function MemberProfile({ m, origin, getOrigin, onClose, onLikes }: { m: MemberIt
   )
 }
 
+const PAGE_SIZE = 10
+
+export function MemberGrid({ items, total, label = 'MEMBERS' }: { items: { m: MemberItem; caption?: string }[]; total?: number; label?: string }) {
+  const [visible, setVisible] = useState(PAGE_SIZE)
+  const active = items.filter(({ m }) => m.status === 'active').length
+  const shown = items.slice(0, visible)
+  const remaining = items.length - shown.length
+  const filtered = total !== undefined && total !== items.length
+  return (
+    <div>
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
+        <div className="flex items-end gap-4">
+          <span className="font-display text-5xl font-extrabold leading-none text-white sm:text-6xl">{items.length}</span>
+          <div className="pb-1">
+            <p className="font-display text-xs font-bold tracking-[0.3em] text-blue">{label}</p>
+            <p className="mt-1 font-display text-[10px] tracking-[0.2em] text-mist">{filtered ? `IN THIS FILTER · ${total} TOTAL` : 'IN THE ROSTER'}</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <span className="inline-flex h-8 items-center gap-2 rounded-full border border-win/40 bg-ink/50 px-3 font-display text-[10px] font-semibold tracking-[0.16em] text-win">
+            <span className="h-1.5 w-1.5 rounded-full bg-win shadow-[0_0_8px] shadow-win" />{active} ACTIVE
+          </span>
+          <span className="inline-flex h-8 items-center gap-2 rounded-full border border-white/15 bg-ink/50 px-3 font-display text-[10px] font-semibold tracking-[0.16em] text-mist">
+            <span className="h-1.5 w-1.5 rounded-full bg-mist/70" />{items.length - active} INACTIVE
+          </span>
+        </div>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        {shown.map(({ m, caption }) => (
+          <div key={m.id}>
+            {caption ? <p className="mb-4 font-display text-xs font-bold tracking-[0.35em] text-ice">{caption}</p> : null}
+            <MemberCard m={m} />
+          </div>
+        ))}
+      </div>
+      {items.length > PAGE_SIZE ? (
+        <div className="mt-10 flex flex-col items-center gap-4">
+          <p className="font-display text-[11px] tracking-[0.22em] text-mist">SHOWING {shown.length} OF {items.length}</p>
+          <div className="h-1 w-full max-w-xs overflow-hidden rounded-full bg-white/10">
+            <div className="h-full bg-blue transition-[width] duration-500" style={{ width: `${(shown.length / items.length) * 100}%` }} />
+          </div>
+          {remaining > 0 ? (
+            <button type="button" onClick={() => setVisible((count) => count + PAGE_SIZE)} className="bg-blue px-8 py-3.5 font-display text-xs font-bold tracking-[0.25em] text-white transition hover:bg-ice hover:text-ink clip-cut-sm">
+              LOAD MORE · {Math.min(PAGE_SIZE, remaining)} MORE
+            </button>
+          ) : (
+            <button type="button" onClick={() => setVisible(PAGE_SIZE)} className="border border-white/15 px-8 py-3.5 font-display text-xs font-bold tracking-[0.25em] text-mist transition hover:border-blue hover:text-white clip-cut-sm">
+              SHOW LESS
+            </button>
+          )}
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
 export default function MemberBrowser({ members, filters = 'mode' }: { members: MemberItem[]; filters?: 'mode' | 'teams' }) {
   const [mode, setMode] = useState<(typeof modes)[number]>('BOTH')
   const [team, setTeam] = useState<(typeof teams)[number]['id']>('ALL')
@@ -332,7 +388,7 @@ export default function MemberBrowser({ members, filters = 'mode' }: { members: 
         </div>
       )}
       {shown.length ? (
-        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">{shown.map((m) => <MemberCard key={m.id} m={m} />)}</div>
+        <MemberGrid key={`${mode}-${team}-${main}`} items={shown.map((m) => ({ m }))} total={members.length} />
       ) : (
         <Empty title={members.length ? 'No members in this filter' : 'Roster coming soon'}>{members.length ? 'Try another team or main. Staff sets these when editing a member.' : 'Members will appear here once they are added by the clan staff.'}</Empty>
       )}

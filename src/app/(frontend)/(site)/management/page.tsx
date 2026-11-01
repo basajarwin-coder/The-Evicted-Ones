@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-import { MemberCard, type MemberItem } from '@/components/MemberBrowser'
+import { MemberGrid, type MemberItem } from '@/components/MemberBrowser'
 import { Empty, PageHero } from '@/components/ui'
 import { getMembers } from '@/lib/data'
 import { leadershipRank } from '@/lib/roster'
@@ -21,14 +21,13 @@ export async function ManagementSection() {
       <PageHero eyebrow="CLAN OFFICE" title="Management">The President, Vice President, and Web Developer of TEO. These are the people who lead and build the clan.</PageHero>
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
         {leaders.length ? (
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-            {leaders.map((member) => (
-              <div key={member.id}>
-                <p className="mb-4 font-display text-xs font-bold tracking-[0.35em] text-ice">{office[leadershipRank(member.position)]}</p>
-                <MemberCard m={{ ...(member as unknown as MemberItem), realName: member.socials?.name, likes: Number(member.socials?.likes ?? 0), socials: member.socials, avatar: typeof member.avatar === 'object' ? member.avatar : null }} />
-              </div>
-            ))}
-          </div>
+          <MemberGrid
+            label="MANAGEMENT"
+            items={leaders.map((member) => ({
+              caption: office[leadershipRank(member.position)],
+              m: { ...(member as unknown as MemberItem), realName: member.socials?.name, likes: Number(member.socials?.likes ?? 0), socials: member.socials, avatar: typeof member.avatar === 'object' ? member.avatar : null },
+            }))}
+          />
         ) : (
           <Empty title="Management has not been posted">When staff set a member’s title to Owner / Clan Master, Vice Clan Master, or Web Developer, that person appears here.</Empty>
         )}
